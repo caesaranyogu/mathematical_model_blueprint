@@ -154,7 +154,7 @@ A reference for Section 7 and Section 8 of the Modeling Journal.
 
 ---
 
-## 1. Linear Model
+### 1. Linear Model
 
 $$
 Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_k X_k + \epsilon
@@ -164,7 +164,7 @@ The workhorse. Assumes the output is a weighted sum of inputs plus noise. Used w
 
 ---
 
-## 2. Polynomial Model
+### 2. Polynomial Model
 
 $$
 Y = \beta_0 + \beta_1 X + \beta_2 X^2 + \cdots + \beta_n X^n + \epsilon
@@ -174,7 +174,7 @@ A linear model in disguise — linear in the coefficients, nonlinear in the inpu
 
 ---
 
-## 3. Logistic Model
+### 3. Logistic Model
 
 $$
 P(Y=1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X)}}
@@ -184,7 +184,7 @@ Maps any input to a probability between 0 and 1 via the sigmoid function. Used f
 
 ---
 
-## 4. Exponential Growth / Decay
+### 4. Exponential Growth / Decay
 
 $$
 Y(t) = Y_0 \, e^{rt}
@@ -194,7 +194,7 @@ Output grows (or shrinks) at a rate proportional to its current size. $r > 0$ is
 
 ---
 
-## 5. Power Law
+### 5. Power Law
 
 $$
 Y = a X^b
@@ -204,7 +204,7 @@ Scale-free relationship — doubling the input doesn't add a fixed amount, it mu
 
 ---
 
-## 6. Logarithmic Model
+### 6. Logarithmic Model
 
 $$
 Y = a + b \ln(X)
@@ -214,7 +214,7 @@ Rapid change at first, then diminishing sensitivity. Used when early inputs matt
 
 ---
 
-## 7. Ordinary Differential Equation (ODE)
+### 7. Ordinary Differential Equation (ODE)
 
 $$
 \frac{dY}{dt} = f(Y, t)
@@ -224,7 +224,7 @@ Models how a quantity changes over time as a function of its current state. Used
 
 ---
 
-## 8. System of ODEs
+### 8. System of ODEs
 
 $$
 \frac{d\mathbf{Y}}{dt} = \mathbf{f}(\mathbf{Y}, t) \quad \text{where} \quad \mathbf{Y} = \begin{bmatrix} Y_1 \\ Y_2 \\ \vdots \\ Y_n \end{bmatrix}
@@ -234,7 +234,7 @@ Multiple interacting quantities evolving simultaneously. Used for predator-prey 
 
 ---
 
-## 9. Partial Differential Equation (PDE)
+### 9. Partial Differential Equation (PDE)
 
 $$
 \frac{\partial u}{\partial t} = \alpha \nabla^2 u
@@ -244,7 +244,7 @@ Models quantities that change in both time and space. The example above is the h
 
 ---
 
-## 10. Bayesian Model
+### 10. Bayesian Model
 
 $$
 P(\theta \mid D) = \frac{P(D \mid \theta) \, P(\theta)}{P(D)}
@@ -254,7 +254,7 @@ Updates belief about parameters $\theta$ after observing data $D$. Prior belief 
 
 ---
 
-## 11. Markov Chain
+### 11. Markov Chain
 
 $$
 P(X_{t+1} = j \mid X_t = i) = p_{ij} \quad \text{with transition matrix} \quad \mathbf{P} = [p_{ij}]
@@ -264,7 +264,7 @@ The future depends only on the present, not the past (memoryless). Used for weat
 
 ---
 
-## 12. Hidden Markov Model (HMM)
+### 12. Hidden Markov Model (HMM)
 
 $$
 \text{Hidden:} \quad P(Z_{t+1} \mid Z_t) \qquad \text{Observed:} \quad P(X_t \mid Z_t)
@@ -274,7 +274,7 @@ A Markov chain you can't see directly — you infer hidden states from noisy obs
 
 ---
 
-## 13. Monte Carlo Simulation
+### 13. Monte Carlo Simulation
 
 $$
 \hat{\mu} = \frac{1}{N} \sum_{i=1}^{N} f(X_i) \quad \text{where} \quad X_i \sim P(X)
@@ -284,7 +284,7 @@ Estimate an answer by running thousands of random experiments and averaging. Use
 
 ---
 
-## 14. Optimization Model
+### 14. Optimization Model
 
 $$
 \min_{\theta} \; f(\theta) \quad \text{subject to} \quad g_i(\theta) \leq 0, \quad h_j(\theta) = 0
@@ -294,7 +294,7 @@ Find the best parameters under constraints. Every ML training loop is this. Used
 
 ---
 
-## 15. Neural Network
+### 15. Neural Network
 
 $$
 \hat{Y} = \sigma\!\Big(W_n \, \sigma\!\big(W_{n-1} \cdots \sigma(W_1 X + b_1) \cdots + b_{n-1}\big) + b_n\Big)
@@ -304,7 +304,7 @@ Nested layers of linear transformations with nonlinear activations $\sigma$. Uni
 
 ---
 
-## 16. Linear Algebra / Matrix Model
+### 16. Linear Algebra / Matrix Model
 
 $$
 \mathbf{Y} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\epsilon}
@@ -314,7 +314,7 @@ The matrix form of the linear model. Solves all $k$ coefficients at once via $\h
 
 ---
 
-## 17. Time Series (ARIMA)
+### 17. Time Series (ARIMA)
 
 $$
 Y_t = c + \phi_1 Y_{t-1} + \cdots + \phi_p Y_{t-p} + \theta_1 \epsilon_{t-1} + \cdots + \theta_q \epsilon_{t-q} + \epsilon_t
@@ -324,7 +324,7 @@ Past values and past errors predict the future. AR = autoregressive (past values
 
 ---
 
-## 18. Gaussian Process
+### 18. Gaussian Process
 
 $$
 f(X) \sim \mathcal{GP}\!\big(m(X),\; k(X, X')\big)
@@ -334,7 +334,7 @@ A distribution over functions, not parameters. Defined by a mean function $m$ an
 
 ---
 
-## 19. Agent-Based Model
+### 19. Agent-Based Model
 
 $$
 X_i^{(t+1)} = R\!\big(X_i^{(t)},\; \{X_j^{(t)}\}_{j \in N_i},\; \epsilon_i\big)
@@ -344,7 +344,7 @@ Each agent $i$ updates its state based on its own state, its neighbors' states, 
 
 ---
 
-## 20. Game-Theoretic Model
+### 20. Game-Theoretic Model
 
 $$
 u_i(s_i^*, s_{-i}) \geq u_i(s_i, s_{-i}) \quad \forall \; s_i \in S_i
@@ -354,7 +354,7 @@ Each player $i$ picks a strategy $s_i^*$ that maximizes their utility $u_i$ give
 
 ---
 
-## 21. Information-Theoretic Model
+### 21. Information-Theoretic Model
 
 $$
 H(X) = -\sum_{i} P(x_i) \log P(x_i)
@@ -364,7 +364,7 @@ Measures uncertainty, information content, and compression limits. Used for feat
 
 ---
 
-## 22. Graph / Network Model
+### 22. Graph / Network Model
 
 $$
 \mathbf{A} \in \{0,1\}^{n \times n} \quad \text{where} \quad A_{ij} = 1 \iff \text{edge from } i \text{ to } j
@@ -374,7 +374,7 @@ Relationships encoded as nodes and edges in an adjacency matrix. Used for social
 
 ---
 
-## 23. Survival Model
+### 23. Survival Model
 
 $$
 S(t) = P(T > t) = e^{-\int_0^t \lambda(s)\,ds}
@@ -384,7 +384,7 @@ Models time until an event — death, failure, churn. The hazard function $\lamb
 
 ---
 
-## 24. Stochastic Differential Equation (SDE)
+### 24. Stochastic Differential Equation (SDE)
 
 $$
 dX_t = \mu(X_t, t)\,dt + \sigma(X_t, t)\,dW_t
@@ -394,7 +394,7 @@ An ODE with a noise term $dW_t$ (Brownian motion). Deterministic drift plus rand
 
 ---
 
-## 25. Causal / Structural Equation Model (SEM)
+### 25. Causal / Structural Equation Model (SEM)
 
 $$
 X_i = f_i(\text{Pa}(X_i),\; U_i) \quad \forall \; i

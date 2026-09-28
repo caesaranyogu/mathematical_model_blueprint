@@ -110,7 +110,7 @@ Rate of change of $y$ with respect to $x$.
 
 $$\int f(x)\,dx$$
 
-Accumulation / integration.
+The total area under a curve. Infinite slices of the whole. S summa symbol for sum of slice pieces
 
 ## Probability
 
@@ -146,11 +146,11 @@ Sample standard deviation.
 
 $$\text{Cov}(X,Y)$$
 
-Covariance.
+Covariance. How two variables move together.
 
 $$\text{Corr}(X,Y)$$
 
-Correlation.
+Correlation.Covariance on a scale of -1 to 1.
 
 ## Vectors
 

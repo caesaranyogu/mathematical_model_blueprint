@@ -90,19 +90,19 @@ Less than.
 Greater than.
 
 \[
-\leq
+<=
 \]
 
 Less than or equal to.
 
 \[
-\geq
+>=
 \]
 
 Greater than or equal to.
 
 \[
-\approx
+squigly =
 \]
 
 Approximately equal.

@@ -78,31 +78,31 @@ Equal.
 Not equal.
 
 \[
-<
+"<"
 \]
 
 Less than.
 
 \[
->
+">"
 \]
 
 Greater than.
 
 \[
-<=
+"<="
 \]
 
 Less than or equal to.
 
 \[
->=
+">="
 \]
 
 Greater than or equal to.
 
 \[
-squigly =
+"squigly ="
 \]
 
 Approximately equal.

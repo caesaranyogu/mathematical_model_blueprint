@@ -589,45 +589,254 @@ Time period:
 
 Which parameters need to be estimated?
 
+# Parameter Estimation Methods
+
+For Section 11 of the Modeling Journal.
+
+---
+
+## Analytical (Closed-Form) Methods
+*Solve the math directly — one equation, one answer*
+
+### Ordinary Least Squares (OLS)
+
+$$
+\hat{\boldsymbol{\beta}} = (\mathbf{X}^\top \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{Y}
+$$
+
+Minimizes the sum of squared errors. You get an exact formula — no iteration, no guessing. Works when the model is linear in its parameters and the assumptions (normality, homoscedasticity, independence) hold.
+
+**When to use:** Linear regression, polynomial regression, any model where the math is clean enough to invert.
+
+---
+
+### Maximum Likelihood Estimation (MLE)
+
+$$
+\hat{\theta}_{\text{MLE}} = \arg\max_{\theta} \; \prod_{i=1}^{n} P(y_i \mid \theta)
+$$
+
+Or equivalently in log form:
+
+$$
+\hat{\theta}_{\text{MLE}} = \arg\max_{\theta} \; \sum_{i=1}^{n} \log P(y_i \mid \theta)
+$$
+
+Ask: "What parameter values make the data I actually observed most probable?" You write down the likelihood function, take the derivative, set it to zero, and solve. If you can't solve it analytically, you optimize numerically.
+
+**When to use:** Logistic regression, Poisson models, any model where you can write down the probability of the data.
+
+---
+
+### Method of Moments
+
+$$
+\hat{\theta}: \quad \frac{1}{n}\sum_{i=1}^{n} g(X_i) = \mathbb{E}[g(X)]
+$$
+
+Match sample statistics (mean, variance, skewness) to their theoretical formulas and solve for the parameters. Simpler than MLE but often less efficient.
+
+**When to use:** Quick estimates, distribution fitting, when MLE is too complex.
+
+---
+
+## Iterative / Numerical Methods
+*The math can't be solved directly — search for the answer*
+
+### Gradient Descent
+
+$$
+\theta_{t+1} = \theta_t - \eta \, \nabla_\theta \mathcal{L}(\theta_t)
+$$
+
+Start with a guess. Compute the slope of the loss function. Take a step downhill. Repeat. $\eta$ is the learning rate — too big and you overshoot, too small and you crawl.
+
+**When to use:** Neural networks, any model where the loss function is differentiable but has no closed-form solution.
+
+---
+
+### Stochastic Gradient Descent (SGD)
+
+$$
+\theta_{t+1} = \theta_t - \eta \, \nabla_\theta \mathcal{L}(\theta_t; \, x_i, y_i)
+$$
+
+Same as gradient descent but uses one random data point (or a mini-batch) per step instead of the full dataset. Noisier but much faster on large data.
+
+**When to use:** Large datasets, deep learning, online learning.
+
+---
+
+### Newton-Raphson
+
+$$
+\theta_{t+1} = \theta_t - \mathbf{H}^{-1} \nabla_\theta \mathcal{L}(\theta_t)
+$$
+
+Uses the curvature (Hessian matrix $\mathbf{H}$) to take smarter steps than gradient descent. Converges faster but each step is expensive.
+
+**When to use:** Small-to-medium models where you can compute the Hessian — logistic regression, GLMs.
+
+---
+
+### Expectation-Maximization (EM)
+
+$$
+\text{E-step:} \quad Q(\theta \mid \theta^{(t)}) = \mathbb{E}_{Z \mid X, \theta^{(t)}}[\log P(X, Z \mid \theta)]
 $$
 
 $$
+\text{M-step:} \quad \theta^{(t+1)} = \arg\max_\theta \; Q(\theta \mid \theta^{(t)})
+$$
+
+For models with hidden variables. Alternate between guessing the hidden variables (E-step) and optimizing the parameters given those guesses (M-step). Guaranteed to improve each iteration.
+
+**When to use:** Gaussian mixture models, HMMs, any model with latent/missing data.
+
+---
+
+## Bayesian Methods
+*Combine what you already know with what the data says*
+
+### Bayes' Theorem (Full Posterior)
+
+$$
+P(\theta \mid D) = \frac{P(D \mid \theta) \, P(\theta)}{P(D)}
+$$
+
+Don't estimate a single number — estimate a whole distribution over possible parameter values. The prior $P(\theta)$ is what you believed before seeing data. The posterior $P(\theta \mid D)$ is what you believe after.
+
+**When to use:** Small samples, strong prior knowledge, when you need uncertainty quantification, not just a point estimate.
+
+---
+
+### Maximum A Posteriori (MAP)
+
+$$
+\hat{\theta}_{\text{MAP}} = \arg\max_\theta \; P(D \mid \theta) \, P(\theta)
+$$
+
+The peak of the posterior distribution — a compromise between MLE (data only) and the prior (belief only). Equivalent to MLE with a regularization penalty.
+
+**When to use:** When you want a single best estimate but still want to incorporate prior knowledge. Ridge regression is secretly MAP with a Gaussian prior.
+
+---
+
+### Markov Chain Monte Carlo (MCMC)
+
+$$
+\theta^{(t+1)} \sim q(\theta \mid \theta^{(t)}) \quad \text{accept with probability} \quad \min\!\left(1, \; \frac{P(\theta^{(t+1)} \mid D)}{P(\theta^{(t)} \mid D)}\right)
+$$
+
+When the posterior is too complex to solve analytically, generate samples from it by random walking through parameter space. After enough steps, the samples approximate the true posterior.
+
+**When to use:** Complex Bayesian models, hierarchical models, any posterior you can evaluate but can't integrate.
+
+---
+
+### Variational Inference (VI)
+
+$$
+\hat{q} = \arg\min_{q \in \mathcal{Q}} \; \text{KL}\!\big(q(\theta) \;\|\; P(\theta \mid D)\big)
+$$
+
+Approximate the posterior with a simpler distribution $q$ by minimizing the divergence between them. Faster than MCMC but less exact.
+
+**When to use:** Large-scale Bayesian models, deep generative models (VAEs), when MCMC is too slow.
+
+---
+
+## Regularized Methods
+*Prevent overfitting by penalizing complexity*
+
+### Ridge (L2)
+
+$$
+\hat{\boldsymbol{\beta}} = \arg\min_{\boldsymbol{\beta}} \left\{ \sum_{i=1}^{n}(y_i - \mathbf{x}_i^\top \boldsymbol{\beta})^2 + \lambda \|\boldsymbol{\beta}\|_2^2 \right\}
+$$
+
+Shrinks all parameters toward zero. Never sets them exactly to zero. Controls overfitting when you have many correlated features.
+
+---
+
+### Lasso (L1)
+
+$$
+\hat{\boldsymbol{\beta}} = \arg\min_{\boldsymbol{\beta}} \left\{ \sum_{i=1}^{n}(y_i - \mathbf{x}_i^\top \boldsymbol{\beta})^2 + \lambda \|\boldsymbol{\beta}\|_1 \right\}
+$$
+
+Shrinks parameters toward zero AND sets some exactly to zero — automatic feature selection. Use when you suspect most variables don't matter.
+
+---
+
+### Elastic Net (L1 + L2)
+
+$$
+\hat{\boldsymbol{\beta}} = \arg\min_{\boldsymbol{\beta}} \left\{ \sum_{i=1}^{n}(y_i - \mathbf{x}_i^\top \boldsymbol{\beta})^2 + \lambda_1 \|\boldsymbol{\beta}\|_1 + \lambda_2 \|\boldsymbol{\beta}\|_2^2 \right\}
+$$
+
+Best of both — selects features like Lasso, handles correlated features like Ridge.
+
+---
+
+## Non-Parametric Methods
+*Let the data decide the shape — no fixed equation*
+
+### Kernel Density Estimation (KDE)
+
+$$
+\hat{f}(x) = \frac{1}{n h} \sum_{i=1}^{n} K\!\left(\frac{x - x_i}{h}\right)
+$$
+
+Estimate the probability density by placing a smooth bump (kernel $K$) on each data point. Bandwidth $h$ controls smoothness.
+
+---
+
+### k-Nearest Neighbors (k-NN)
+
+$$
+\hat{Y}(x) = \frac{1}{k} \sum_{i \in N_k(x)} Y_i
+$$
+
+No parameters to estimate at all — just average the $k$ closest data points. The "model" is the data itself.
+
+---
+
+### Bootstrap
+
+$$
+\hat{\theta}^{*(b)} = T(D^{*(b)}) \quad \text{for} \quad b = 1, \ldots, B
+$$
+
+Resample your data with replacement $B$ times, estimate the parameter each time, and use the distribution of estimates to quantify uncertainty. Works for any estimator.
+
+**When to use:** When you don't know the theoretical distribution of your estimator — confidence intervals, standard errors, bias correction.
+
+---
+
+## Decision Framework
+
+```text
+Can you write P(data | θ)?
+├── Yes
+│   ├── Can you solve dL/dθ = 0 analytically?
+│   │   ├── Yes → MLE (closed-form) or OLS
+│   │   └── No → Gradient Descent / Newton-Raphson
+│   ├── Do you have prior knowledge?
+│   │   ├── Yes → Bayesian (MAP, MCMC, VI)
+│   │   └── No → MLE
+│   └── Are there hidden variables?
+│       └── Yes → EM Algorithm
+├── No
+│   ├── Can you define a loss function?
+│   │   └── Yes → Gradient Descent / SGD
+│   └── No → Non-parametric (KDE, k-NN, Bootstrap)
+└── Too many features?
+    └── Yes → Regularization (Ridge, Lasso, Elastic Net)
+
+
 
 How will they be estimated?
-
----
-
-## 12. Validation
-
-How will I know whether the model works?
-
----
-
-## 13. Error
-
-What metric will I use?
-
-$$
-
-$$
-
----
-
-## 14. Sensitivity
-
-Which assumptions matter most?
-
----
-
-## 15. Causality
-
-What alternative explanations exist?
-
----
-
-## 16. Python
-
-```python
 
 ```
 

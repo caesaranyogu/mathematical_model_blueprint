@@ -116,7 +116,7 @@ y=f(x)
 y is produced by function f using x.
 
 \[
-f(x_1,x_2,\ldots,x_n)
+f(x_1,x_2,...x_n)
 \]
 
 A function can have many inputs.

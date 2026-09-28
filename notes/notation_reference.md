@@ -73,7 +73,7 @@ Remainder.
 Equal.
 
 \[
-\neq
+\neg with slash through
 \]
 
 Not equal.

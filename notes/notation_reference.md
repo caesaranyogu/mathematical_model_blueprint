@@ -160,7 +160,12 @@ A vector is an ordered collection of values.
 
 ## Matrices
 
-$$X = \begin{bmatrix} x_{11} & x_{12} \\ x_{21} & x_{22} \end{bmatrix}$$
+$$
+X = \begin{bmatrix}
+x_{(1,1)} & x_{(1,2)} \\
+x_{(2,1)} & x_{(2,2)}
+\end{bmatrix}
+$$
 
 A matrix is a rectangular array of values.
 

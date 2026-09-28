@@ -1,3 +1,4 @@
+
 # Mathematical Modeling Journal
 
 Copy this file whenever you begin a new model.
@@ -22,9 +23,9 @@ What is the dependent variable?
 
 Symbol:
 
-\[
+$$
 Y=
-\]
+$$
 
 Operational definition:
 
@@ -65,8 +66,9 @@ Draw the causal chain:
 
 Start with the simplest plausible model.
 
-\[
-\]
+$$
+
+$$
 
 Explain every symbol in words.
 
@@ -76,18 +78,21 @@ Explain every symbol in words.
 
 ### Model A
 
-\[
-\]
+$$
+
+$$
 
 ### Model B
 
-\[
-\]
+$$
+
+$$
 
 ### Model C
 
-\[
-\]
+$$
+
+$$
 
 ---
 
@@ -119,8 +124,9 @@ Time period:
 
 Which parameters need to be estimated?
 
-\[
-\]
+$$
+
+$$
 
 How will they be estimated?
 
@@ -136,8 +142,9 @@ How will I know whether the model works?
 
 What metric will I use?
 
-\[
-\]
+$$
+
+$$
 
 ---
 

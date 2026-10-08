@@ -1,4 +1,13 @@
 # Mathematical Fundamentals for Machine Learning — Study Notes
+
+Program vs AI
+
+A traditional program follows rules a human wrote explicitly. If experience is greater than 5 and degree equals Masters then salary equals 90000. The logic is fixed. A human must rewrite the code to change behavior. It may or may not use matrices. A spreadsheet is a matrix. Nobody calls Excel AI.
+
+An AI system learns its own rules from data. You give it 10,000 examples and it discovers the pattern itself. The learned knowledge is stored in matrices of weights that no human wrote. Feed it new data and it updates itself. The defining characteristic is the learning loop. See data, make a prediction, check how wrong you were, adjust the weights, repeat millions of times.
+
+The difference is not the presence of matrices. Both can use them. The difference is whether the matrices were written by a human or learned by the machine.
+
 Linear Algebra
 
 ---

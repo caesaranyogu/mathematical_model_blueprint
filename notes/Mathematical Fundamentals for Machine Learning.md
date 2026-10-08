@@ -13,6 +13,20 @@ This covers three mathematical pillars — linear algebra, differential calculus
 
 Linear algebra is how machines see and organize data. Every image, sentence, or dataset gets turned into matrices and vectors before a model ever touches it.
 
+Linear Regression
+
+Linear regression is a mathematical model that predicts a continuous number by adding together weighted inputs along a best fit line that minimizes prediction error.
+
+Etymology
+
+"Linear" from Latin linearis meaning "of a line." The model predicts by adding scaled variables together in a straight line equation. Addition is the defining operation.
+
+"Regression" from Latin regressus meaning "to go back." Coined by Sir Francis Galton in the 1880s when he observed that tall parents produce slightly shorter children and short parents produce slightly taller children. The data regressed, went back, toward the average. The name stuck for all line fitting ever since.
+
+Characteristics of Linear Regression
+
+The model is a weighted sum. ŷ = β₀ + β₁x₁ + β₂x₂ + β₃x₃ Each input contributes independently through addition, no multiplication between variables, no exponents. The output is always a continuous number, a price, a temperature, a salary, never a category. The weights reveal how much each input matters and by how much. It serves two purposes. Prediction of new outcomes and understanding which variables move the needle.
+
 ### Core Data Structures
 
 Vectors are single lists of numbers (like arrays in computer science). Matrices have 2 indices (rows and columns). Tensors go beyond 2 dimensions (3+ indices). These structures store and represent large datasets efficiently.

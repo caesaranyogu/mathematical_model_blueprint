@@ -8,8 +8,6 @@ An AI system learns its own rules from data. You give it 10,000 examples and it 
 
 The difference is not the presence of matrices. Both can use them. The difference is whether the matrices were written by a human or learned by the machine.
 
-Linear Algebra
-
 ---
 
 ## Course Overview

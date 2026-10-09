@@ -1,4 +1,4 @@
-# Mathematical Fundamentals for Machine Learning — Study Notes
+# Mathematical Fundamentals for Machine Learning Study Notes
 
 Program vs AI
 
